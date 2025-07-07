@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ci - Home</title>
+  <link rel="icon" href="./assests/Ci - Cinema Intelligence Logo (May 2, 2025).png" type="image/x-icon"/>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <nav class="navbar fixed-top bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html"><img src="./assests/Ci - Cinema Intelligence Logo (May 2, 2025).png"
+          height="30" width="30"> <span style="color: whitesmoke; font-weight: bold;">Cinema Intelligence</span></a>
+
+      <form class="d-flex me-2" role="search" onsubmit="handleSearch(event)">
+  <input class="form-control me-2" type="search" placeholder="Search Movies" aria-label="Search" id="searchInput">
+  <button class="btn btn-outline-info" type="submit">Search</button>
+</form>
+
+      <a class="navbar-brand btn btn-outline-primary" href="./ci.html" type="button" title="Chat With Ci"><span
+          style="color: whitesmoke; font-weight: bold;">Ci 🤖</span></a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Welcome to Cinema Intelligence</h1>
+    <p>Your smart movie guide powered by AI. Ask Ci anything!</p>
+    <a href="./ci.html" class="btn btn-primary mt-3">Chat with Ci Now</a>
+  </section>
+
+  <!-- Trending/Top rated/upcomming sections -->
+  <section class="container text-center my-5">
+    <h2 class="text-light mb-4">Explore More</h2>
+    <button class="btn btn-outline-warning mx-2" data-bs-toggle="modal"
+      data-bs-target="#trendingModal" style="width: 25%;">Trending</button>
+    <button class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#topRatedModal" style="width: 25%;">Top
+      Rated</button>
+    <button class="btn btn-outline-info mx-2" data-bs-toggle="modal" data-bs-target="#upcomingModal" style="width: 25%;">Upcoming</button>
+  </section>
+
+
+  <!-- Cards for Explore by Genre -->
+  <section class="container my-5">
+    <h2 class="text-center text-light mb-4">Explore by Genre</h2>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-3">
+      <!-- Card 1 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/action.png" class="card-img-top" alt="Action" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Action</h5>
+            <p class="card-text">High-octane thrillers packed with explosions and stunts.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="28" data-genre-name="Action">Go to Action Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/drama.png" class="card-img-top" alt="Drama" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Drama</h5>
+            <p class="card-text">Emotionally driven stories that touch your heart.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="18" data-genre-name="Drama">Go to Drama Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/comedy.png" class="card-img-top" alt="Comedy" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Comedy</h5>
+            <p class="card-text">Laugh-out-loud moments and feel-good vibes.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="35" data-genre-name="Comedy">Go to Comedy Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/sci-fi.png" class="card-img-top" alt="Sci-Fi" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Sci-Fi</h5>
+            <p class="card-text">Explore the future, space, and high-tech imagination.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="878" data-genre-name="Science Fiction">Go to Sci-Fi Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/horror.png" class="card-img-top" alt="Horror" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Horror</h5>
+            <p class="card-text">Spine-chilling tales to keep you on the edge.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="27" data-genre-name="Horror">Go to Horror Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/thriller .png" class="card-img-top" alt="Thriller" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Thriller</h5>
+            <p class="card-text">Suspense and twists that keep you guessing.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="53" data-genre-name="Thriller">Go to Thriller Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/animation.png" class="card-img-top" alt="Animation" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Animation</h5>
+            <p class="card-text">Colorful adventures for kids and adults alike.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="16" data-genre-name="Animation">Go to Animation Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/fantasy.png" class="card-img-top" alt="Fantasy" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Fantasy</h5>
+            <p class="card-text">Magical worlds filled with mythical creatures.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="14" data-genre-name="Fantasy">Go to Fantasy Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/adventure.png" class="card-img-top" alt="Adventure" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Adventure</h5>
+            <p class="card-text">Epic journeys and daring escapades await you.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="12" data-genre-name="Adventure">Go to Adventure Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/documentary.png" class="card-img-top" alt="Documentary" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Documentary</h5>
+            <p class="card-text">Real stories that educate and inspire change.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="99" data-genre-name="Documentary">Go to Documentary Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/mystery.png" class="card-img-top" alt="Mystery" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Mystery</h5>
+            <p class="card-text">Unravel secrets hidden deep in every scene.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="9648" data-genre-name="Mystery">Go to Mystery Movies</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="col">
+        <div class="card h-100">
+          <img src="./assests/romance.png" class="card-img-top" alt="Romance" style="width: 640; height: auto;">
+          <div class="card-body">
+            <h5 class="card-title">Romance</h5>
+            <p class="card-text">Heartwarming stories of love and relationships.</p>
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#genreModal"
+              data-genre-id="10749" data-genre-name="Romance" disabled>Go to Romance Movies</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Common Genre Modal -->
+  <div class="modal fade" id="genreModal" tabindex="-1" aria-labelledby="genreModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="genreModalLabel">Loading...</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="genre-movies-container" class="row"></div>
+          <div class="d-flex justify-content-center my-3">
+            <button id="loadMoreBtn" class="btn btn-outline-info d-none">Load More</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Trending Model -->
+  <div class="modal fade" id="trendingModal" tabindex="-1" aria-labelledby="trendingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="trendingLabel">Trending Movies</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="trending-container" class="row"></div>
+          <!-- Load More Button -->
+          <div class="d-flex justify-content-center mt-4">
+            <button id="loadMore-Trending" class="btn btn-outline-info">Load More</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Rated Model -->
+  <div class="modal fade" id="topRatedModal" tabindex="-1" aria-labelledby="trendingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="topRatedLabel">Top Rated Movies</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="topRated-container" class="row"></div>
+          <!-- Load More Button -->
+          <div class="d-flex justify-content-center mt-4">
+            <button id="loadMore-TopRated" class="btn btn-outline-info">Load More</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- upcomming Model -->
+  <div class="modal fade" id="upcomingModal" tabindex="-1" aria-labelledby="trendingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="upcomingLabel">Upcoming Movies</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="upcoming-container" class="row"></div>
+          <!-- Load More Button -->
+          <div class="d-flex justify-content-center mt-4">
+            <button id="loadMore-Upcoming" class="btn btn-outline-info">Load More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Search Model -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Search Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="search-results-container" class="row"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- JavaScript Code -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+  <script>
+  const apiKey = "d29b21d2e3be70e2af93e413bf6d7c1f";
+  const genreTitle = document.getElementById("genreModalLabel");
+  const movieContainer = document.getElementById("genre-movies-container");
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+  let currentGenreId = null;
+  let currentPage = 1;
+
+  // Function to load genre-based movies
+  function loadGenreMovies(genreId, page = 1) {
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&page=${page}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.results.length === 0 && page === 1) {
+          movieContainer.innerHTML = "<p class='text-center'>No movies found for this genre.</p>";
+          loadMoreBtn.classList.add("d-none");
+          return;
+        }
+
+        data.results.forEach(movie => {
+          if (movie.poster_path) {
+            const card = `
+  <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" class="card-img-top" alt="${movie.title || 'Movie Poster'}" style="height: 250px; object-fit: cover; width: 100%;">
+      <div class="card-body p-2">
+        <h6 class="card-title mb-1">${movie.title}</h6>
+        <p class="card-text small">${movie.overview.split(' ').slice(0, 15).join(' ')}...</p>
+      </div>
+    </div>
+  </div>`;
+            movieContainer.innerHTML += card;
+          }
+        });
+
+        loadMoreBtn.classList.remove("d-none");
+      });
+  }
+
+  // Event: Genre card click
+  document.querySelectorAll("[data-bs-target='#genreModal']").forEach(button => {
+    button.addEventListener("click", () => {
+      currentGenreId = button.getAttribute("data-genre-id");
+      const genreName = button.getAttribute("data-genre-name");
+      currentPage = 1;
+
+      genreTitle.innerText = `${genreName} Movies`;
+      movieContainer.innerHTML = `
+        <div class="d-flex justify-content-center py-5">
+          <div class="spinner-border text-info" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>`;
+      loadMoreBtn.classList.add("d-none");
+
+      loadGenreMovies(currentGenreId, currentPage);
+    });
+  });
+
+  // Genre modal Load More
+  loadMoreBtn.addEventListener("click", () => {
+    currentPage++;
+    loadGenreMovies(currentGenreId, currentPage);
+  });
+
+  // Endpoints
+  const endpoints = {
+    trending: "https://api.themoviedb.org/3/trending/movie/day",
+    topRated: "https://api.themoviedb.org/3/movie/top_rated",
+    upcoming: "https://api.themoviedb.org/3/movie/upcoming"
+  };
+
+  // For Trending/TopRated/Upcoming modals
+  function loadStaticMovies(endpoint, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = `
+      <div class="d-flex justify-content-center py-5">
+        <div class="spinner-border text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>`;
+
+    fetch(`${endpoint}?api_key=${apiKey}&page=1`)
+      .then(res => res.json())
+      .then(data => {
+        container.innerHTML = "";
+        if (!data.results || data.results.length === 0) {
+          container.innerHTML = "<p class='text-center'>No movies found.</p>";
+          return;
+        }
+
+        data.results.forEach(movie => {
+          if (movie.poster_path) {
+            const card = `
+  <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" class="card-img-top" alt="${movie.title || 'Movie Poster'}" style="height: 250px; object-fit: cover; width: 100%;">
+      <div class="card-body p-2">
+        <h6 class="card-title mb-1">${movie.title}</h6>
+        <p class="card-text small">${movie.overview.split(' ').slice(0, 15).join(' ')}...</p>
+      </div>
+    </div>
+  </div>`;
+            container.innerHTML += card;
+          }
+        });
+      });
+  }
+
+  // Modal open event listeners
+  document.getElementById("trendingModal").addEventListener("show.bs.modal", () => {
+    loadStaticMovies(endpoints.trending, "trending-container");
+  });
+  document.getElementById("topRatedModal").addEventListener("show.bs.modal", () => {
+    loadStaticMovies(endpoints.topRated, "topRated-container");
+  });
+  document.getElementById("upcomingModal").addEventListener("show.bs.modal", () => {
+    loadStaticMovies(endpoints.upcoming, "upcoming-container");
+  });
+
+  // Page trackers
+  let trendingPage = 1;
+  let topRatedPage = 1;
+  let upcomingPage = 1;
+
+  // Load More logic
+  function fetchAndAppendMovies(url, containerId, page) {
+    fetch(`${url}&page=${page}`)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById(containerId);
+        data.results.forEach(movie => {
+          if (movie.poster_path) {
+            const card = `
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title || 'Movie Poster'}">
+              <div class="card-body">
+                <h6 class="card-title">${movie.title}</h6>
+                <p class="card-text">${movie.overview.split(' ').slice(0, 20).join(' ')}...</p>
+              </div>
+            </div>
+          </div>`;
+            container.innerHTML += card;
+          }
+        });
+      });
+  }
+
+  // Load more button events
+  document.getElementById("loadMore-Trending").addEventListener("click", () => {
+    trendingPage++;
+    fetchAndAppendMovies(endpoints.trending + `?api_key=${apiKey}`, "trending-container", trendingPage);
+  });
+
+  document.getElementById("loadMore-TopRated").addEventListener("click", () => {
+    topRatedPage++;
+    fetchAndAppendMovies(endpoints.topRated + `?api_key=${apiKey}`, "topRated-container", topRatedPage);
+  });
+
+  document.getElementById("loadMore-Upcoming").addEventListener("click", () => {
+    upcomingPage++;
+    fetchAndAppendMovies(endpoints.upcoming + `?api_key=${apiKey}`, "upcoming-container", upcomingPage);
+  });
+
+  // Reset modal content on close
+  document.getElementById("trendingModal").addEventListener("hidden.bs.modal", () => {
+    document.getElementById("trending-container").innerHTML = "";
+    trendingPage = 1;
+  });
+  document.getElementById("topRatedModal").addEventListener("hidden.bs.modal", () => {
+    document.getElementById("topRated-container").innerHTML = "";
+    topRatedPage = 1;
+  });
+  document.getElementById("upcomingModal").addEventListener("hidden.bs.modal", () => {
+    document.getElementById("upcoming-container").innerHTML = "";
+    upcomingPage = 1;
+  });
+
+// Handle Search
+function handleSearch(event) {
+  event.preventDefault(); // prevent page reload
+  const query = document.getElementById("searchInput").value.trim();
+
+  if (!query) return;
+
+  const container = document.getElementById("search-results-container");
+  container.innerHTML = `
+    <div class="d-flex justify-content-center py-5">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  `;
+
+  // Open the search modal
+  const searchModal = new bootstrap.Modal(document.getElementById('searchModal'));
+  searchModal.show();
+
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`)
+    .then(res => res.json())
+    .then(data => {
+      container.innerHTML = "";
+
+      if (!data.results || data.results.length === 0) {
+        container.innerHTML = "<p class='text-center'>No movies found for your search.</p>";
+        return;
+      }
+
+      data.results.forEach(movie => {
+        if (movie.poster_path) {
+          const card = `
+  <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+    <div class="card h-100 shadow-sm">
+      <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" class="card-img-top" alt="${movie.title || 'Movie Poster'}" style="height: 250px; object-fit: cover; width: 100%;">
+      <div class="card-body p-2">
+        <h6 class="card-title mb-1">${movie.title}</h6>
+        <p class="card-text small">${movie.overview.split(' ').slice(0, 15).join(' ')}...</p>
+      </div>
+    </div>
+  </div>`;
+          container.innerHTML += card;
+        }
+      });
+    });
+}
+
+
+</script>
+
+
+</body>
+
+</html>
